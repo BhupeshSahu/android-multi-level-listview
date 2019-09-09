@@ -4,9 +4,10 @@ buildscript {
         maven {
             url 'http://dev.open-rnd.net:30844/content/groups/public/'
         }
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:3.4.2'
     }
 }
 
@@ -16,6 +17,7 @@ allprojects {
         maven {
             url 'http://dev.open-rnd.net:30844/content/groups/public/'
         }
+        google()
     }
 }
 

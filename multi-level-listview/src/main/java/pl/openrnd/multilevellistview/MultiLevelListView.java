@@ -136,6 +136,7 @@ public class MultiLevelListView extends FrameLayout {
         } else {
             mListView = (ListView) LayoutInflater.from(getContext()).inflate(listLayoutId, null);
         }
+        mListView.setDividerHeight(0);
     }
 
     /**
