@@ -20,7 +20,7 @@ package pl.openrnd.multilevellistview;
 
 /**
  * Class used to get information about list item and its location in MultiLevelListView.
- *
+ * <p>
  * ItemInfo interface implementation.
  */
 class NodeItemInfo implements ItemInfo {
@@ -79,6 +79,22 @@ class NodeItemInfo implements ItemInfo {
     @Override
     public boolean isExpandable() {
         return mNode.isExpandable();
+    }
+
+    @Override
+    public String getHierarchyPath(String delimiter) {
+        StringBuilder builder = new StringBuilder();
+        getIndexPath(builder, delimiter, mNode);
+        return builder.substring(0,builder.length()-delimiter.length());
+    }
+
+
+    private void getIndexPath(StringBuilder index, String delimiter, Node node) {
+        Node parent = node.getParent();
+        if (parent != null && parent.getLevel() >= 0) {
+            getIndexPath(index, delimiter, parent);
+        }
+        index.append(node.getIdxInLevel()).append(delimiter);
     }
 
 }

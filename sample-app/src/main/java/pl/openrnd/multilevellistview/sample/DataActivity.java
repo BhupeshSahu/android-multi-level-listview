@@ -105,7 +105,8 @@ public class DataActivity extends Activity {
             StringBuilder builder = new StringBuilder("\"");
             builder.append(((BaseItem) object).getName());
             builder.append("\" clicked!\n");
-            builder.append(getItemInfoDsc(itemInfo));
+            builder.append("");
+            builder.append(itemInfo.getHierarchyPath("->"));
 
             Toast.makeText(DataActivity.this, builder.toString(), Toast.LENGTH_SHORT).show();
         }

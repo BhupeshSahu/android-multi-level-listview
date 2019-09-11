@@ -58,4 +58,12 @@ public interface ItemInfo {
      */
     boolean isExpandable();
 
+    /**
+     * Gets hierarchy path for this node.
+     *
+     * @return list of indexes from current node to root node separated by delimiter provided.
+     */
+    String getHierarchyPath(String delimiter);
+
+
 }
