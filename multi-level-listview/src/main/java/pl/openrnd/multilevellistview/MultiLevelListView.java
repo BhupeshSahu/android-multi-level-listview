@@ -113,6 +113,10 @@ public class MultiLevelListView extends FrameLayout {
         return mNestType;
     }
 
+    public void performItemClick(View view, int position, long id) {
+        mListView.performItemClick(view, position, id);
+    }
+
     /**
      * Initializes view
      *
