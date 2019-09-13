@@ -47,7 +47,7 @@ public abstract class MultiLevelListAdapter {
 
     /**
      * Gets list of object's sub-items.
-     *
+     * <p>
      * Called only for expandable objects.
      *
      * @param object The object.
@@ -58,9 +58,9 @@ public abstract class MultiLevelListAdapter {
     /**
      * Gets view configured to display the object.
      *
-     * @param object The object.
+     * @param object      The object.
      * @param convertView The view that can be reused if possible. Null value if not available.
-     * @param itemInfo The InfoItem object with information about item location in MultiLevelListView.
+     * @param itemInfo    The InfoItem object with information about item location in MultiLevelListView.
      * @return The view that reflects the object.
      */
     protected abstract View getViewForObject(Object object, View convertView, ItemInfo itemInfo);
@@ -90,6 +90,16 @@ public abstract class MultiLevelListAdapter {
         mProxyAdapter.notifyDataSetChanged();
     }
 
+    public int getFlatListPosition(ItemInfo info) {
+        int index = -1;
+        for (Node node : mFlatItems) {
+            index++;
+            if (node.getLevel() == info.getLevel() && node.getIdxInLevel() == info.getIdxInLevel())
+                return index;
+        }
+        return index;
+    }
+
     /**
      * Reloads data. Method is causing nodes recreation.
      */
@@ -110,7 +120,7 @@ public abstract class MultiLevelListAdapter {
      * Creates list of nodes for data items provided to adapter.
      *
      * @param dataItems List of objects for which nodes have to be created.
-     * @param parent Node that is a parent for nodes created for data items.
+     * @param parent    Node that is a parent for nodes created for data items.
      * @return List with nodes.
      */
     private List<Node> createNodeListFromDataItems(List<?> dataItems, Node parent) {
@@ -145,7 +155,7 @@ public abstract class MultiLevelListAdapter {
      * Adds recurrently nodes and their sub-nodes to provided list.
      *
      * @param result Output parameter with flat list of items.
-     * @param nodes Nodes list.
+     * @param nodes  Nodes list.
      */
     private void collectItems(List<Node> result, List<Node> nodes) {
         if (nodes != null) {
@@ -205,10 +215,10 @@ public abstract class MultiLevelListAdapter {
 
     /**
      * Extends node.
-     *
+     * <p>
      * Adds sub-nodes to the node.
      *
-     * @param node The node.
+     * @param node    The node.
      * @param nestTyp NestType value.
      */
     void extendNode(Node node, NestType nestTyp) {
@@ -221,7 +231,7 @@ public abstract class MultiLevelListAdapter {
 
     /**
      * Collapse node.
-     *
+     * <p>
      * Clears node's sub-nodes.
      *
      * @param node The node
